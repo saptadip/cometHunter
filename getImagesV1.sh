@@ -3,8 +3,9 @@ YEAR="2020"
 CAMERA="c3"
 DATE="20200928"
 FILE_LST=".full_1024.lst"
+CREATE_MOVIE_SCRIPT="createMovieV1.py"
 
-mkdir -p ./images/$DATE/video
+mkdir -p ./images/$DATE
 
 DOWNLOAD_LINK=`echo $BASE_URL"/"$YEAR"/"$CAMERA"/"$DATE"/"$FILE_LST`
 wget $DOWNLOAD_LINK -P ./images/$DATE
@@ -23,6 +24,7 @@ else
   rm -rf ./images/$DATE
   wget -r -l1 -nH --cut-dirs=5 $IMAGE_LINK -P ./images -A $wildCard
   ls ./images/$DATE/$wildCard > ./images/$DATE/.full_1024.lst
-  mkdir -p ./images/$DATE/video
 fi
 
+python3 $CREATE_MOVIE_SCRIPT $DATE
+mv $DATE.avi videos
