@@ -27,4 +27,10 @@ else
 fi
 
 python3 $CREATE_MOVIE_SCRIPT $DATE
-mv $DATE.avi videos
+if [ $? -eq 0 ]
+then
+  echo "Video file creation complete. Archiving file to videos directory."
+  mv $DATE.avi videos
+else
+  echo "Video file creation failed. Please check!!"
+fi
