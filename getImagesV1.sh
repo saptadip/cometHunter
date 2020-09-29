@@ -1,7 +1,7 @@
 BASE_URL="https://soho.nascom.nasa.gov/data/REPROCESSING/Completed"
 YEAR="2020"
 CAMERA="c3"
-DATE="20200928"
+DATE=$1
 FILE_LST=".full_1024.lst"
 CREATE_MOVIE_SCRIPT="createMovieV1.py"
 
